@@ -24,6 +24,10 @@ module Frappuccino
       end
     end
 
+    def method_missing(meth, *args, &blk)
+      @value.send(meth, *args, &blk)
+    end
+
     def map(&blk)
       MapProperty.new(self, &blk)
     end
